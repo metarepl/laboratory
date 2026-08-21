@@ -1,80 +1,390 @@
-# teaspoon
-a little bit of typed immutability on top of CL as a treat. tsp, rhymes with lisp.
+* laboratory
 
-* Modular, versioned repo based distribution
-Qlot
-* Typed
-coalton-lang/coalton
-* Immutable functional
+WIP
+
+GOALS
+
+toward complete computational reproducibility
+
+engineering a stack for end-to-end, bit-level, declarative, deterministic computing;
+from the OS through to architecture down to code styling.
+
+an operating system for scientific computation
+
+with a little bit of typed immutability on top of common lisp as a treat
+
+higher order experiment components, composition and comparison
+
+declarative deployable pipelines and experiment tracking
+
+setup of convenience functions
+
+* motivation
+
+Replication is the highest condition for experimental processes,
+  and is the standard to which science aims.
+In which an entire experiment can be duplicated with the same results.
+Reproducibility is the minimal condition.
+In which a portion of an experiment can be re executed,
+  whether or not the results are the same.
+Without reproducibility,
+  we cannot claim to have science,
+  we may have a useful technology or an elaborate and technical tool chain,
+  but whatever it is, it is not science.
+Without reproducibility,
+  the epistemic foundation is severed,
+  such that the scientific process is precluded.
+
+Currently the state of scientific computation is in dire straits.
+To illustrate,
+  consider the expected replication rate of 5-15% for jupiter note books, &&& cite
+  the lingua franca of data science.
+Bioinformatics pipelines and data management processes fare better,
+  however they fall short of 50% replication rates. &&& cite
+
+Researchers and institutions are aware of this challenge,
+  yet a frank examination of the presented solutions yields a piecemeal picture,
+  we find excellent yet partial solutions solving isolated elements of the scientific computation environment.
+What is needed is an integrated, architecture of computational reproducibility.
+The paradigm and theory exists to acomplish what one might claim is the primary promise of computation.
+
+Scientific programming presents a series of conflicting requirements on the researcher.
+- Maintainable code, &&&
+- High Performance, &&&
+- Composable components, &&&
+- Flexible inquiry, &&&
+- Introspection, &&&
+- Auditability, &&&
+- Complexity reduction, &&&
+- Natural expression of the scientific process, &&&
+
+Integration of these requirements remains to be accomplished.
+Beyond integration, leadership and examples are required.
+Rigourous Systems and Environments can be difficult to setup,
+  clear pathways are needed.
+Deep integration of declarative systems and functional programming,
+  can lead to conceptually difficult code,
+  clear examples and pathways into use are needed
+
+In short what is required is a complete architecture of reproducible methodology
+- Operating Systems
+- Environments
+- Experiment data topology
+- Data management
+- Programming Standards
+
+This is a motion toward that solution.
+
+* reproducibility stack
+** principals
+
+  - declarative
+  - stateless
+  - functional
+  - deterministic
+  - idempotent
+  - integrated
+
+** orthogonality of
+
+  - machine
+  - setup
+  - identity
+  - secrets
+  - data
+
+** system
+
+- debian/guix
+- sbcl
+- ocicl
+- repocicl
+- consfigurator
+
+** inputs
+
+- DVC data version control
+- QC enforcement
+- contexts &&&
+
+** process
+
+- functional programming
+- work-spaces &&&
+- CAT provenance chain &&&
+
+** outputs
+
+- persistence &&&
+
+* architecture
+
+- uncommon machine
+- identity in passage
+- secrets in passage decrypted by identity
+- data under DVC remotely
+- transient data persisted on disk
+- &&&
+
+* select systems
+** Integrated operating system
+
+containerization of a complete system
+https://github.com/metarepl/uncommon-machine
+
+** Declarative operating system state
+
+guix shell
+
+** Declarative file system state
+
+declarative systems
+https://github.com/spwhitton/consfigurator
+
+declarative systems
+https://github.com/Virtual-Insurance-Products/cl-sysop
+
+** System info
+
+https://github.com/Shinmera/machine-state/
+
+extrospect &&&
+uniform interface to machine, hardware and network beyond the image
+
+introspect &&&
+uniform interface to discover image, systems and contents, packages and contents, documentation
+
+consortium &&&
+uniform communication between separate images
+
+** Deterministic distribution
+
+ocicl
+https://github.com/ocicl/ocicl
+
+repocicl &&&
+
+megalith &&&
+
+modularity and discoverability
+see naming scheme &&&
+
+** Typed and higher order
+
+coalton
+https://github.com/coalton-lang/coalton/
+
+** Immutable functional data types
+
 slburson/fset/
+https://github.com/slburson/fset
+
 slburson/misc-extensions/
-* Transducing pipelines
-fosskers/cl-transducers
-arrow-macros (<> ...)
-* Uniform
-access
-* Parallelized
-lparallel, mem managed
-* Memoized
-garlic0x1/memeozi
-&&&
-apply via hof macro that also hashes the function body
-all fun share a single lookup space
-make memory aware limitation
-cull by freq
-* Transactional memory and disk ops
+https://github.com/slburson/misc-extensions
+
+** Memoized
+
+memoization
+https://github.com/AccelerationNet/function-cache
+
+persist &&&
+
+** Transactional memory and disk ops
+
 cosmos72/stmx
-shinmera/depot
-* Explicit data types
-() list
-#() vector
-{} set
-#{} dict
-* Setup
-** Qlot
+https://github.com/cosmos72/stmx
 
-#+begin_src bash
-  curl -L https://qlot.tech/installer | sh
-  #add to path in .bashrc
-  export PATH="${PATH}:/home/<user>/.local/share/qlot/bin"
-  source .bashrc
-  qlot # to test path
+Depot
+file system protocol browse read write with locks and ACID safety
+https://shinmera.github.io/depot/
 
-  #nav to project
-  qlot init
-  qlot add mito
-  qlot install
+** Logging
 
-  qlot exec sbcl # to test startup
-  (quit)
-#+end_src
+machine readable logs, of sufficient detail, provide auditing/replication/testing
+https://github.com/melisgl/journal
 
-add to dotfile
+** Testing
+
+composable tests from unit to integration
+https://github.com/melisgl/try
+
+** Pipelines
+
+data frames stats and dependency oriented programming
+https://github.com/ghollisjr/cl-ana/wiki
+
+efficient data processing
+https://github.com/fosskers/transducers
+
+arrow-macros
+https://github.com/hipeta/arrow-macros
+
+serapeum arrow macros &&&
+
+syntax modification useful for data pipelines
+https://quickref.common-lisp.net/arrows.html
+
+composable pipeline components &&&
+
+** Parallel processing
+
+lparallel
+https://sharplispers.github.io/lparallel/
+https://github.com/lmj/lparallel
+
 #+begin_src lisp
-    (setq slime-lisp-implementations
-          '((qlot ("qlot" "exec" "sbcl") :coding-system utf-8-unix)
-            (sbcl ("sbcl") :coding-system utf-8-unix)))
-    ;; defaulting to qlot
-    ;; you can choose with negative prefix: M-- ,'
-#+end_src
+                                          ; lparallel startup
+  (ql:quickload :lparallel)
+  (use-package :lparallel)
+  (setf lparallel:*kernel* (lparallel:make-kernel 8)) ;set worker threads
 
-start emacs and in lisp repl
+                                          ; env setup for examples
+  (defun gt-five (x)
+    (if (> x 5)
+        x))
+
+  (defun lt-five (x)
+    (if (< x 5)
+        x))
+
+  (defparameter *mylist* '(0 1 2 3 4 5 6 7 8 9 10) )
+
+                                          ; usage
+  (pmap 'list (lambda (x) (* x x)) '(1 2 3 4))
+  (preduce #'+ #(1 2 3 4 5))
+
+  (premove '5 '(1 2 3 4 5 6 7 8 9 0))
+
+  (premove-if (lambda (x) (> x 5)) '(0 1 2 3 4 5 6 7 8 9 10))
+  (premove-if #'gt-five '(0 1 2 3 4 5 6 7 8 9 10))
+  (premove-if #'gt-five *mylist*)
+
+  (premove-if-not #'gt-five *mylist*)
+  (premove-if #'gt-five *mylist*)
+  (premove-if #'lt-five *mylist*)
+  (premove-if-not #'lt-five *mylist*)
+
+  (defun my-filter (predicate list)
+    (reduce 'nreconc
+            (lparallel:preduce-partial (lambda (acc x)
+                                         (if (funcall predicate x)
+                                             acc
+                                             (cons x acc)))
+                                       list
+                                       :initial-value nil)
+            :initial-value nil
+            :from-end t))
+
+  (my-filter #'gt-five *mylist*)
+  #+end_src
+
+lfarm
+https://github.com/lmj/lfarm
+
+load gated process management &&&
+** Statistics
+
+lispstat - linear algebra - stats - plot
+https://lisp-stat.dev/
+
 #+begin_src lisp
-  ;; open lisp file in project first
-  ;; then start repl
-  (uiop:getcwd) ; expect root of project
-  ql:*quicklisp-home* ; local not /home/<user>/quicklisp
-  (ql:where-is-system 'mito) ; local not /home/<user>/quicklisp
+                                          ; RE bug on loading in guix
+                                          ; Cffi path Ref: https://lists.gnu.org/archive/html/bug-guix/2020-01/msg00133.html
+(ql:quickload :lisp-stat) ; stats
 
-  (ql:quickload :qlot)
-  (qlot:init #P"/home/<user>/this-project")
-  qlot:*project-root*
-  (ql:where-is-system 'click) ; expect NIL
-  (qlot:add 'mito)
-  (ql:where-is-system 'click) ; expect local
-  (qlot:install)
-
-  ;; if project.asd file has unsaved changes ie #.project.asd exists
-  ;; there are a number of bugs I should specify and report
-
+                                          ; usage&&&
 #+end_src
+
+** ML and matrices
+
+ML
+https://github.com/melisgl/mgl
+
+clml machine learning
+https://github.com/mmaul/clml
+
+nvidia interop
+https://github.com/takagi/cl-cuda
+
+matrix algebra
+https://github.com/quil-lang/magicl
+
+deep learning
+https://github.com/hikettei/cl-waffe2
+
+numpy clone
+https://numcl.github.io/numcl/
+
+#+begin_src lisp
+                                          ; Creating and manipulating arrays:
+  (numcl:array '(1 2 3 4 5))  ; Create a 1D array
+  (numcl:zeros '(3 3))        ; Create a 3x3 array of zeros
+  (numcl:aref my-array 1 2)   ; Access element at row 1, column 2
+
+                                          ; Basic operations:
+  (numcl:+ (numcl:array '(1 2 3)) (numcl:array '(4 5 6)))  ; Element-wise addition
+  (numcl:* (numcl:array '(1 2 3)) 2)                       ; Scalar multiplication
+
+                                          ; Mathematical functions:
+  (numcl:sin (numcl:array '(0 (/ pi 2) pi)))  ; Element-wise sine
+  (numcl:exp (numcl:array '(0 1 2)))          ; Element-wise exponential
+
+                                          ; Linear algebra:
+  (numcl:matmul matrix1 matrix2)  ; Matrix multiplication
+  (numcl:transpose my-matrix)     ; Matrix transposition
+#+end_src
+
+** Implication, Solution and search
+
+production document search indexing and retrival
+https://github.com/sharplispers/montezuma/
+
+production expert system
+https://github.com/youngde811/Lisa
+https://github.com/youngde811/Lisa/wiki
+
+nondeterministic space search with backtracking
+https://github.com/nikodemus/screamer
+https://nikodemus.github.io/screamer/
+
+** Generators
+
+dubious choices currently
+
+gtwiwtg - generators the way I want them generated
+https://github.com/d3v3l0/gtwiwtg
+https://cicadas.surf/cgit/colin/gtwiwtg.git/about/
+clear and modernized and documented
+
+series
+https://github.com/rtoy/cl-series
+high quality high perf
+
+** External
+
+gnu scientific library for cl
+https://gsll.common-lisp.dev/
+https://www.gnu.org/software/gsl/
+
+** Citations
+
+- https://www.math.fau.de/wp-content/uploads/2020/09/Preprint-2002-40-scan.pdf
+- &&& bring other lisp citations here!
+
+** Uniform
+
+uniform datastructure interface
+https://github.com/AccelerationNet/access
+
+explicit data types
+serapeum:dict
+
+** Performance and maintenance
+
+profiling &&&
+
+trace &&&
+
+code network visualization &&&
+
+coalton performance &&&
