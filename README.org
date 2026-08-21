@@ -127,7 +127,7 @@ This is a motion toward that solution.
 - &&&
 
 * select systems
-** Integrated operating system
+** Containerized operating system
 
 containerization of a complete system
 https://github.com/metarepl/uncommon-machine
@@ -140,12 +140,17 @@ guix shell
 
 declarative systems
 https://github.com/spwhitton/consfigurator
+not in asdf yet
+cffi loading error
 
 declarative systems
 https://github.com/Virtual-Insurance-Products/cl-sysop
+not in asdf yet
+not on ocicl
 
 ** System info
 
+hardware information
 https://github.com/Shinmera/machine-state/
 
 extrospect &&&
@@ -157,10 +162,15 @@ uniform interface to discover image, systems and contents, packages and contents
 consortium &&&
 uniform communication between separate images
 
+file system system &&&
+uniform central pathname filename filesystem operations
+
 ** Deterministic distribution
 
 ocicl
 https://github.com/ocicl/ocicl
+not in asdf yet
+load error
 
 repocicl &&&
 
@@ -188,6 +198,7 @@ memoization
 https://github.com/AccelerationNet/function-cache
 
 persist &&&
+not in asdf yet
 
 ** Transactional memory and disk ops
 
@@ -212,6 +223,8 @@ https://github.com/melisgl/try
 
 data frames stats and dependency oriented programming
 https://github.com/ghollisjr/cl-ana/wiki
+not in asdf yet
+cffi loading error
 
 efficient data processing
 https://github.com/fosskers/transducers
@@ -225,6 +238,18 @@ syntax modification useful for data pipelines
 https://quickref.common-lisp.net/arrows.html
 
 composable pipeline components &&&
+
+dataflow reactive paradigm
+
+lwcells
+https://github.com/kchanqvq/lwcells
+not on ocicl
+
+live-cells
+https://github.com/alex-gutev/live-cells-cl/
+
+cells
+https://github.com/kennytilton/cells
 
 ** Parallel processing
 
@@ -299,21 +324,33 @@ https://lisp-stat.dev/
 
 ML
 https://github.com/melisgl/mgl
+not in asdf yet
+cffi loading error
 
 clml machine learning
 https://github.com/mmaul/clml
+not in asdf yet
+heap space error
 
 nvidia interop
 https://github.com/takagi/cl-cuda
+not in asdf yet
+cffi loading error
 
 matrix algebra
 https://github.com/quil-lang/magicl
+not in asdf yet
+cffi loading error
 
 deep learning
 https://github.com/hikettei/cl-waffe2
+not in asdf yet
+not on ocicl
 
 numpy clone
 https://numcl.github.io/numcl/
+not in asdf yet
+ldb loading error
 
 #+begin_src lisp
                                           ; Creating and manipulating arrays:
@@ -351,20 +388,23 @@ https://nikodemus.github.io/screamer/
 
 dubious choices currently
 
+series
+https://github.com/rtoy/cl-series
+high quality high perf
+
 gtwiwtg - generators the way I want them generated
 https://github.com/d3v3l0/gtwiwtg
 https://cicadas.surf/cgit/colin/gtwiwtg.git/about/
 clear and modernized and documented
-
-series
-https://github.com/rtoy/cl-series
-high quality high perf
+not in asdf yet
 
 ** External
 
 gnu scientific library for cl
 https://gsll.common-lisp.dev/
 https://www.gnu.org/software/gsl/
+not in asdf yet
+cffi loading error
 
 ** Citations
 
@@ -375,6 +415,8 @@ https://www.gnu.org/software/gsl/
 
 uniform datastructure interface
 https://github.com/AccelerationNet/access
+
+maybe :clj-coll
 
 explicit data types
 serapeum:dict
@@ -388,3 +430,33 @@ trace &&&
 code network visualization &&&
 
 coalton performance &&&
+
+** Integration
+
+window manager
+https://github.com/stumpwm/stumpwm
+
+editor
+https://lem-project.github.io/
+not in asdf yet
+cffi load error
+
+nyxt
+https://github.com/atlas-engineer/nyxt
+not in asdf yet
+magic number error
+
+autolith
+https://www.lambda-symbolics.com/autolith
+not in asdf yet
+not on ocicl
+
+lish
+https://github.com/metarepl/yew/tree/master/lish
+not in asdf yet
+not on ocicl
+
+interfaces
+https://github.com/rabbibotton/clog
+not in asdf yet
+magic number error

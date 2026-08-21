@@ -1,23 +1,37 @@
-(defsystem :teaspoon
+(defsystem :metarepl.setup.laboratory
   :depends-on (
-               ;; functional style
-               :qlot
                :alexandria
                :serapeum
+               :machine-state
+               :coalton
                :fset
                :misc-extensions ;; fset helper
-               :cl-transducers
-               :listopia
-               :clazy
-               :cl-algebraic-data-type
-               :access
-               :arrow-macros
-               :lparallel
+               :function-cache
                :stmx
                :depot
-               :mito
-               ;; :clj-coll
+               :journal
+               :try
+               :transducers
+               :arrow-macros
+               :arrows
+               :live-cells
+               :cells
+               :lparallel
+               :lfarm-admin
+               :lfarm-client
+               :lfarm-common
+               :lfarm-launcher
+               :lfarm-server
+               :lfarm-ssl
+               :lisp-stat
+               :montezuma
+               :lisa
+               :screamer
+               :series
+               :access
+               :stumpwm
                )
   :serial t
-  :components ((:file "teaspoon") ; a .lisp file
+  :components ((:file "package")
+               (:file "laboratory")
                (:static-file "README.org")))
